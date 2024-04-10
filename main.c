@@ -1,5 +1,6 @@
 #include <ncurses.h>
-// gcc main.c -lncurses
+// document https://www.gnu.org/software/guile-ncurses/manual/
+// build gcc main.c -lncurses
 int main(int argc, char const *argv[])
 {
   initscr(); // 获取终端特征如大小等，并设置终端支持的curses环境
