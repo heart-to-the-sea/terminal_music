@@ -10,16 +10,10 @@ int main(int argc, char const *argv[])
   noecho(); // 告诉curses不要把输入回显到屏幕上
   clear(); // 清空当前屏幕
 
-  ch = getch();
+  /////////////////////////////////
+  
 
-  if(ch == 'A') {
-    printw("F1 key pressed");
-  } else {
-    printw("The pressed key is ");
-    attron(A_BOLD);
-    printw("%c", ch);
-    attroff(A_BOLD);
-  }
+  /////////////////////////////////
   refresh();
   getch();
   endwin(); // 返回控制台

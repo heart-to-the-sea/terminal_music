@@ -1,41 +1,66 @@
 #include <ncurses.h>
+#include <string.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <unistd.h>
 
-int main() {
-    // 初始化 ncurses 模式
+static char *strList[] = {
+    ".", "..", "one", "two", "three", "four", "five"};
+void draww(WINDOW *, int, int);
+int main(int argc, char const *argv[])
+{
     initscr();
-    // 禁用键盘输入缓冲
-    cbreak();
-    // 不显示输入字符
     noecho();
+    cbreak();
+    keypad(stdscr, true);
+    int yMax, xMax;
+    getmaxyx(stdscr, yMax, xMax);
 
-    // 获取屏幕的大小
-    int height, width;
-    getmaxyx(stdscr, height, width);
-
-    // 计算窗口的大小
-    int win_height = height - 4; // 减去边框和边距
-    int win_width = width - 4;   // 减去边框和边距
-
-    // 创建一个新的窗口
-    WINDOW *win = newwin(win_height, win_width, 2, 2); // 从(2, 2)开始显示窗口
-
-    // 使用自定义边框字符绘制边框
-    wborder(win, '|', '|', '-', '-', '+', '+', '+', '+');
-
-    // 在窗口内写入一些内容
-    mvwprintw(win, 1, 1, "This is a sample window");
-
-    // 刷新窗口
-    wrefresh(win);
-
-    // 刷新整个屏幕
-    refresh();
-
-    // 等待用户按下任意键
-    getch();
-
-    // 结束 ncurses 模式
+    WINDOW *menuWindow = newwin(yMax - 1, xMax - 1, 0, 1);
+    scrollok(menuWindow, true);
+    box(menuWindow, 0, 0);
+    draww(menuWindow, 0, yMax);
+    sleep(1);
+    char ch;
+    int i = 1;
+    do
+    {
+        switch (ch)
+        {
+        case 'a':
+            i--;
+            i=i<0?0:i;
+            break;
+        case 'd':
+            i++;
+            i=i>yMax?yMax:i;
+            break;
+        }
+        draww(menuWindow, i, yMax);
+    } while ((ch = getch()) && ch != 'q');
     endwin();
-
     return 0;
+}
+/**
+ * 渲染目录，
+ * 1. 根据传入的start去截取渲染的数据
+ * 2. 如果传入的数据截取长度小于渲染的最大长度则触发清屏操作
+ * */
+void draww(WINDOW *win, int start, int size)
+{
+    wclear(win);
+    int yMax, xMax;
+    getmaxyx(stdscr, yMax, xMax);
+    int len = 60 - start + size;
+    len = len < yMax-1 ? len : yMax-1;
+    for (int i = 0; i <= len; i++)
+    {
+        // strList[i];
+        box(win, 0, 0);
+        // mvwaddwstr(win, i, 2, L"asdfasdf");
+        // wprintw(win, " %s %d\n", "1313231", i+start);
+        mvwprintw(win, i+1, 2, "%s %d \n", "  ---- -->", i + start-1);
+        wrefresh(win);
+    }
+    refresh();
 }
