@@ -29,11 +29,11 @@ int main(int argc, char const *argv[])
         {
         case 'a':
             i--;
-            i=i<0?0:i;
+            i = i < 0 ? 0 : i;
             break;
         case 'd':
             i++;
-            i=i>yMax?yMax:i;
+            i = i > yMax ? yMax : i;
             break;
         }
         draww(menuWindow, i, yMax);
@@ -52,14 +52,14 @@ void draww(WINDOW *win, int start, int size)
     int yMax, xMax;
     getmaxyx(stdscr, yMax, xMax);
     int len = 60 - start + size;
-    len = len < yMax-1 ? len : yMax-1;
+    len = len < yMax - 1 ? len : yMax - 1;
     for (int i = 0; i <= len; i++)
     {
         // strList[i];
         box(win, 0, 0);
         // mvwaddwstr(win, i, 2, L"asdfasdf");
         // wprintw(win, " %s %d\n", "1313231", i+start);
-        mvwprintw(win, i+1, 2, "%s %d \n", "  ---- -->", i + start-1);
+        mvwprintw(win, i + 1, 2, "%s %d \n", "  ---- -->", i + start - 1);
         wrefresh(win);
     }
     refresh();
