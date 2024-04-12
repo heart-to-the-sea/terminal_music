@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/terminal_music.dir/main.cpp.o -o terminal_music   -L/home/xing/workspace/c_workspace/terminal_music/library/fxtui/lib  -Wl,-rpath,/home/xing/workspace/c_workspace/terminal_music/library/fxtui/lib -lfxtui

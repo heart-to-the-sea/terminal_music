@@ -1,0 +1,3 @@
+/home/xing/workspace/c_workspace/terminal_music/build/CMakeFiles/terminal_music.dir
+/home/xing/workspace/c_workspace/terminal_music/build/CMakeFiles/edit_cache.dir
+/home/xing/workspace/c_workspace/terminal_music/build/CMakeFiles/rebuild_cache.dir
