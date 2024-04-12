@@ -1,5 +1,7 @@
 {
   "files.associations": {
-    "form.h": "c"
+    "form.h": "c",
+    "bitset": "cpp",
+    "string_view": "cpp"
   }
 }
