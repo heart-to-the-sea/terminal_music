@@ -1,0 +1,11 @@
+{
+  "configurations": [
+    {
+      "type": "cmake",
+      "request": "launch",
+      "name": "CMake: 脚本调试",
+      "cmakeDebugType": "script",
+      "scriptPath": "${workspaceFolder}/CMakeLists.txt"
+    },
+  ]
+}

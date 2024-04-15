@@ -1,5 +1,6 @@
 {
   "files.associations": {
-    "form.h": "c"
+    "form.h": "c",
+    "iostream": "cpp"
   }
 }
